@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { Route, Switch } from 'react-router-dom';
 import axios from '../../axios-instance';
 import Home from '../../components/Home';
+import Login from '../../components/Login';
 import './App.css';
 import AuthUserContext from '../../hoc/Session/context';
 import UsersContext from '../../hoc/Users/context';
@@ -39,6 +40,7 @@ class App extends Component {
           <AuthUserContext.Provider value={{authUser: this.state.authUser, setAuthUser: this.loginHandler}}>
             <UsersContext.Provider value={{users: this.state.employees, refreshUsers: this.loadEmployees}} >
               <Route path="/" exact component={Home} />
+              <Route path="/login" component={Login} />
             </UsersContext.Provider>
           </AuthUserContext.Provider>
         </Switch>

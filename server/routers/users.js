@@ -1,6 +1,5 @@
 const express = require('express');
 const router = express.Router();
-const helpers = require('../helpers');
 const users = require('../users');
 
 router.get('/', (req, res, next) => {

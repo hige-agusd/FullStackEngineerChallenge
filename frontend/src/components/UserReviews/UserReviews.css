@@ -1,3 +1,7 @@
 .UserReviews {
     margin-top: 35px;
 }
+
+.UserReviews .row:nth-child(even) {
+    background: #f033;
+}

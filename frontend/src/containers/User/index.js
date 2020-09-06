@@ -6,6 +6,11 @@ import AuthUserContext from '../../hoc/Session/context';
 import ReviewsContext from '../../hoc/Reviews/context';
 import './User.css';
 
+/**
+ * UserView
+ * Loads the reviews assinged to the current user
+ * With that and the Users list from the Context, it lists the pending reviews
+ */
 export default class UserView extends Component {
     constructor(props) {
         super(props)
@@ -38,7 +43,6 @@ export default class UserView extends Component {
     }
 
     render() {
-        this.context.authUser.name = 'test';
         let selectedView;
         switch(this.state.selectedTab) {
             case 'reviews': selectedView = (

@@ -1,21 +1,31 @@
 import React, { Fragment, useContext } from 'react';
+import { useHistory } from 'react-router';
 import './Home.css';
 import AuthUserContext from '../../hoc/Session/context';
-import Login from '../Login';
 import AdminView from '../../containers/Admin';
 import UserView from '../../containers/User';
 
-const home = (props) => {
+/**
+ * Home
+ * Main section. If not logged in, redirects to Login
+ * If logged in, shows Admin or User view, according to role
+ */
+const home = () => {
     const {authUser, setAuthUser} = useContext(AuthUserContext);
+
+    if (!authUser) {
+        const history = useHistory();
+        history.push('/login');
+    }
 
     const view = authUser ? 
         <Fragment>
             <div className={'header'}>
                 <span onClick={() => {setAuthUser(null)}}>Logout</span>
             </div>
-            {authUser.role === 'admin' ? <AdminView /> : <UserView />}
+            {authUser && authUser.role === 'admin' ? <AdminView /> : <UserView />}
         </Fragment>
-        : <Login />
+        : null
         
     const divStyle = {height: 'calc(100% - 125px)',
         fallbacks: [

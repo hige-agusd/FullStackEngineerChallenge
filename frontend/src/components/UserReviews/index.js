@@ -4,7 +4,12 @@ import Modal from '../../components/UI/Modal';
 import UsersContext from '../../hoc/Users/context';
 import './UserReviews.css';
  
-const reviews = (props) => {
+/**
+ * UserReviews
+ * List of Reviewee and status of review assigned to current user
+ * @param {Array} props.reviews - Array of reviews
+ */
+const userReviews = (props) => {
 
     const { users } = useContext(UsersContext);
     const [showModal, setShowModal] = useState(false);
@@ -15,7 +20,6 @@ const reviews = (props) => {
         setReviewId(id);
         toggleModal();
     }
-
 
     const modal = 
             showModal ? <Modal classes={'Form'} show={showModal} modalClosed={toggleModal}>
@@ -48,4 +52,4 @@ const reviews = (props) => {
     );
 }
 
-export default reviews;
+export default userReviews;

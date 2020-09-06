@@ -31,6 +31,6 @@
     width: 100px;
 }
 
-.row:nth-child(odd) {
+.Employees .row:nth-child(odd), .Reviews .row:nth-child(odd) {
     background: #f033;
-  }
+}

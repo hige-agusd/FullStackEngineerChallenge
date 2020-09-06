@@ -1,19 +1,22 @@
 import React, { useState, useContext } from 'react';
+import { useHistory } from 'react-router';
 import axios from '../../axios-instance';
 import AuthUserContext from '../../hoc/Session/context';
 import './Login.css';
 
-const login = (props) => {
+const login = () => {
 
     const {setAuthUser} = useContext(AuthUserContext);
 
     const [credentials, setCredentials] = useState({
-        username: 'admin',
-        password: '1234'
+        username: '',
+        password: ''
     });
         
     const [errorMsg, setErrorMsg] = useState('');
 
+    const history = useHistory();
+    
     const change = event => {
         const newCredentials = {
             ...credentials,
@@ -21,28 +24,33 @@ const login = (props) => {
         };
         setCredentials(newCredentials);
     }
-
+    
     const submit = (e) => {
         e.preventDefault();
         setErrorMsg('')
         axios.post('/login', credentials).then(res => {
             const {data: {user = {}} = {}} = res;
             setAuthUser(user);
+            history.push('/');
         }).catch((err) => {
-            setErrorMsg(err.response.data.message);
+            if (err.response && err.response.data && err.response.data.message) {
+                setErrorMsg(err.response.data.message);
+            } else {
+                setErrorMsg(err);
+            }
             setAuthUser(null);
-            // authUser = null;
         });
     };
 
     let {username, password} = credentials;
+    const disableBtn = !username || !password;
     
     return (
         <div className={'Login'}>
             <form onSubmit={submit}>
                 <input type="text" placeholder="username" name="username" value={username} onChange={change} />
                 <input type="password" placeholder="password" name="password" value={password} onChange={change} />
-                <button type="submit">Login</button>
+                <button type="submit" disabled={disableBtn}>Login</button>
                 { errorMsg ? <p>{errorMsg}</p> : null}
             </form>
         </div>

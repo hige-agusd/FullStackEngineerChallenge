@@ -6,6 +6,11 @@ import Reviews from '../../components/Reviews';
 import ReviewsContext from '../../hoc/Reviews/context';
 import './Admin.css';
 
+/**
+ * AdminView
+ * Loads the employees and reviews
+ * It allows to create/edit/delet users, and create/edit reviews
+ */
 export default class AdminView extends Component {
     constructor(props) {
         super(props)

@@ -1,10 +1,12 @@
 import React, { useState, useContext } from 'react';
 import axios from '../../axios-instance';
+import AuthUserContext from '../../hoc/Session/context';
 import UsersContext from '../../hoc/Users/context';
 
-const login = (props) => {
+const employeeForm = (props) => {
 
     const {users, refreshUsers} = useContext(UsersContext);
+    const {authUser} = useContext(AuthUserContext);
 
     let editUser = {};
     if (props.userId) {
@@ -13,7 +15,7 @@ const login = (props) => {
     const [user, setUser] = useState({
         username: '',
         name: '',
-        password: '1234',
+        password: '',
         ...editUser
     });
 
@@ -65,10 +67,10 @@ const login = (props) => {
                 <input type="password" placeholder="password" name="password" value={password} onChange={change} />
                 { errorMsg ? <p>{errorMsg}</p> : null}
                 <button type="submit" disabled={disableBtn}>{props.userId ? 'Update' : 'Add'}</button>
-                {props.userId ? <p className={'delete'} onClick={deleteUser}>Delete User</p> : null }
+                {props.userId && props.userId !== authUser.id ? <p className={'delete'} onClick={deleteUser}>Delete User</p> : null }
             </form>
         </div>
     )
 }
 
-export default login;
+export default employeeForm;
