@@ -1,0 +1,9 @@
+.AdminView {
+    background-color: #fff;
+    height: 100%;
+    margin-left: auto;
+    margin-right: auto;
+    overflow-y: scroll;
+    padding-top: 25px;
+    width: 80%;
+}

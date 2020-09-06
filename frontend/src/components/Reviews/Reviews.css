@@ -1,0 +1,12 @@
+.Reviews {
+    margin-top: 35px;
+}
+
+.Reviews .row.detail .status.submitted {
+    text-decoration: underline;
+    text-transform: capitalize;
+}
+
+.Reviews .row.detail .status.submitted:hover {
+    color: #f03;
+}

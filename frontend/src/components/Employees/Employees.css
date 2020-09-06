@@ -1,0 +1,36 @@
+.Employees {
+    margin-bottom: 35px;
+    margin-top: 35px;
+}
+
+.add {
+    color: #f03;
+    margin-right: 10%;
+    text-align: end;
+}
+
+.row {
+    display: flex;
+    justify-content: space-evenly;
+    line-height: 25px;
+    margin-left: auto;
+    margin-right: auto;
+    width: 80%;
+}
+
+.row.head {
+    font-weight: bold;
+}
+
+.row.detail {
+    cursor: pointer;
+}
+
+.row .id, .row .name, .row .username,
+.row .reviewee, .row .status, .row .reviewer {
+    width: 100px;
+}
+
+.row:nth-child(odd) {
+    background: #f033;
+  }

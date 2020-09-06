@@ -1,0 +1,20 @@
+.Modal {
+    position: fixed;
+    z-index: 500;
+    background-color: white;
+    border: 1px solid #ccc;
+    border-radius: 15px;
+    left: 5%;
+    top: 1%;
+    box-sizing: border-box;
+    transition: all 0.3s ease-out;
+    width: 500px;
+    left: calc(50% - 250px);
+}
+
+.Modal.Form {
+    top: 6%;
+    border: none;
+    padding: 30px;
+    padding-bottom: 45px;
+}
