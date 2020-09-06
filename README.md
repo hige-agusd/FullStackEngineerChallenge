@@ -1,38 +1,23 @@
 # Full Stack Developer Challenge
-This is an interview challengs. Please feel free to fork. Pull Requests will be ignored.
 
-## Requirements
-Design a web application that allows employees to submit feedback toward each other's performance review.
+## Steps
+Within the root directory, there are 2 directories `server/` and `frontend/`. Run `npm install` in both.
+On `server/`, run `node app.js`. This will start our server, and start listening at `http://localhost:4000`.
+Then, on `frontend/` run `npm start`. This will create an instance of the app. I should open a tab, but in case it doesn't, navigate to `http://localhost:3000`.
 
-*Partial solutions are acceptable.*  It is not necessary to submit a complete solution that implements every requirement.
+At first, there's only one user: `admin`, with the safest password there is: `1234`.
+After logging in as an admin, the default view is the CRUD of users and a tab to go to reviews CRUD.
+You can add new users, and then create reviews for them, and assign said reviews to other employees.
 
-### Admin view
-* Add/remove/update/view employees
-* Add/update/view performance reviews
-* Assign employees to participate in another employee's performance review
+When logging in as an employee, the only view is the list of feedback requested, and by clicking on the elements of the list, we can complete the review and send it.
 
-### Employee view
-* List of performance reviews requiring feedback
-* Submit feedback
+Since I'm not using a database to persist the info, all employees and reviews will exist while the server is still running. Once it's down, and up again, we are back
+to having just the admin.
 
-## Challenge Scope
-* High level description of design and technologies used
-* Server side API (using a programming language and/or framework of your choice)
-  * Implementation of at least 3 API calls
-  * Most full stack web developers at PayPay currently use Java, Ruby on Rails, or Node.js on the server(with MySQL for the database), but feel free to use other tech if you prefer
-* Web app
-  * Implementation of 2-5 web pages using a modern web framework (e.g. React or Angular) that talks to server side
-    * This should integrate with your API, but it's fine to use static responses for some of it 
-* Document all assumptions made
-* Complete solutions aren't required, but what you do submit needs to run.
+## Assumptions
+* It's for medium and large devices. Altough it's usable in small devices, some visual defects are expected.
+* `admin` doesn't review. It's just an administrative user that handles the list of employees and requests feedback.
+* You can request feedback for the same employee multiple times, but you can't ask more than once to the same reviewer feedback about the same employee.
+* The last one changes once the feedback is sent. (You can't have pending multiple instaces of the same Reviewee-Reviewer)
+* The details of the feedback were completely arbitrarily chosen by me.
 
-## How to complete this challenge
-* Fork this repo in github
-* Complete the design and code as defined to the best of your abilities
-* Place notes in your code to help with clarity where appropriate. Make it readable enough to present to the PayPay interview team
-* Complete your work in your own github repo and send the results to us and/or present them during your interview
-
-## What are we looking for? What does this prove?
-* Assumptions you make given limited requirements
-* Technology and design choices
-* Identify areas of your strengths
