@@ -1,9 +1,9 @@
 # Full Stack Developer Challenge
 
 ## Steps
-Within the root directory, there are 2 directories `server/` and `frontend/`. Run `npm install` in both.
+Within the root directory, there are 2 directories `server/` and `frontend/`. Run `npm install` and `yarn` respectively.
 On `server/`, run `node app.js`. This will start our server, and start listening at `http://localhost:4000`.
-Then, on `frontend/` run `npm start`. This will create an instance of the app. I should open a tab, but in case it doesn't, navigate to `http://localhost:3000`.
+Then, on `frontend/` run `yarn start`. This will create an instance of the app. I should open a tab, but in case it doesn't, navigate to `http://localhost:3000`.
 
 At first, there's only one user: `admin`, with the safest password there is: `1234`.
 After logging in as an admin, the default view is the CRUD of users and a tab to go to reviews CRUD.
