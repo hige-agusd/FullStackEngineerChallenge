@@ -26,9 +26,12 @@
     cursor: pointer;
 }
 
-.row .id, .row .name, .row .username,
+.row .id, .row .username,
 .row .reviewee, .row .status, .row .reviewer {
     width: 100px;
+}
+.row .name {
+    width: 350px;
 }
 
 .Employees .row:nth-child(odd), .Reviews .row:nth-child(odd) {

@@ -5,7 +5,7 @@ import UsersContext from '../../hoc/Users/context';
 import AuthUserContext from '../../hoc/Session/context';
 import './ReviewForm.css';
 
-const reviewForm = (props) => {
+const ReviewForm = (props) => {
 
     const {reviews, refreshReviews} = useContext(ReviewsContext);
     const {users} = useContext(UsersContext);
@@ -92,4 +92,4 @@ const reviewForm = (props) => {
     )
 }
 
-export default reviewForm;
+export default ReviewForm;

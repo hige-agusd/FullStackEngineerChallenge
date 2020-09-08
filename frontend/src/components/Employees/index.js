@@ -4,7 +4,7 @@ import Modal from '../../components/UI/Modal';
 import UsersContext from '../../hoc/Users/context';
 import './Employees.css';
  
-const employees = (props) => {
+const Employees = (props) => {
 
     const {users} = useContext(UsersContext);
     const [showModal, setShowModal] = useState(false);
@@ -45,4 +45,4 @@ const employees = (props) => {
     );
 }
 
-export default employees;
+export default Employees;

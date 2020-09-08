@@ -1,12 +1,12 @@
 import React, { useState, useContext } from 'react';
 import { useHistory } from 'react-router';
 import axios from '../../axios-instance';
-import AuthUserContext from '../../hoc/Session/context';
+import { useAuthUserContext } from '../../hoc/Session/context';
 import './Login.css';
 
-const login = () => {
+const Login = () => {
 
-    const {setAuthUser} = useContext(AuthUserContext);
+    const {setAuthUser} = useAuthUserContext();
 
     const [credentials, setCredentials] = useState({
         username: '',
@@ -51,10 +51,10 @@ const login = () => {
                 <input type="text" placeholder="username" name="username" value={username} onChange={change} />
                 <input type="password" placeholder="password" name="password" value={password} onChange={change} />
                 <button type="submit" disabled={disableBtn}>Login</button>
-                { errorMsg ? <p>{errorMsg}</p> : null}
+                { errorMsg ? <p className={'error-msg'}>{errorMsg}</p> : null}
             </form>
         </div>
     )
 }
 
-export default login;
+export default Login;

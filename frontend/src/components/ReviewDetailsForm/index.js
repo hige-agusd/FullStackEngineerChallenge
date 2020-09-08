@@ -2,7 +2,7 @@ import React, { useState, useContext } from 'react';
 import axios from '../../axios-instance';
 import ReviewsContext from '../../hoc/Reviews/context';
 
-const reviewDetailsForm = (props) => {
+const ReviewDetailsForm = (props) => {
 
     const {reviews, refreshReviews} = useContext(ReviewsContext);
 
@@ -103,4 +103,4 @@ const reviewDetailsForm = (props) => {
     )
 }
 
-export default reviewDetailsForm;
+export default ReviewDetailsForm;

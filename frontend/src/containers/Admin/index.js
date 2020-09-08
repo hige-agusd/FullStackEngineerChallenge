@@ -47,14 +47,13 @@ export default class AdminView extends Component {
             break;
             case 'reviews': selectedView = (
                 <ReviewsContext.Provider value={{reviews: this.state.reviews, refreshReviews: this.loadReviews}} >
-                    <Reviews reviews={this.state.reviews} />
+                    <Reviews />
                 </ReviewsContext.Provider>
             ); 
             break;
             default: selectedView = null;
         }
         
-
         return (
             <section className={'AdminView'}>
                 <TabSelector selected={this.state.selectedTab} tabs={this.state.sections} click={this.tabSelectedHandler} />

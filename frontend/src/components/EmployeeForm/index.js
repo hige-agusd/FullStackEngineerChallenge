@@ -3,7 +3,7 @@ import axios from '../../axios-instance';
 import AuthUserContext from '../../hoc/Session/context';
 import UsersContext from '../../hoc/Users/context';
 
-const employeeForm = (props) => {
+const EmployeeForm = (props) => {
 
     const {users, refreshUsers} = useContext(UsersContext);
     const {authUser} = useContext(AuthUserContext);
@@ -63,7 +63,7 @@ const employeeForm = (props) => {
             <h1>{`${props.userId ? 'Edit' : 'Add'} Employee`}</h1>
             <form onSubmit={submit}>
                 <input type="text" placeholder="name" name="name" value={name} onChange={change} />
-                <input type="text" placeholder="username" name="username" value={username} onChange={change} />
+                <input type="text" placeholder="username" name="username" value={username} onChange={change} disabled={props.userId && props.userId} />
                 <input type="password" placeholder="password" name="password" value={password} onChange={change} />
                 { errorMsg ? <p>{errorMsg}</p> : null}
                 <button type="submit" disabled={disableBtn}>{props.userId ? 'Update' : 'Add'}</button>
@@ -73,4 +73,4 @@ const employeeForm = (props) => {
     )
 }
 
-export default employeeForm;
+export default EmployeeForm;

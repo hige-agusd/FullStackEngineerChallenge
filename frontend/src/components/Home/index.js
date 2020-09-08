@@ -10,11 +10,11 @@ import UserView from '../../containers/User';
  * Main section. If not logged in, redirects to Login
  * If logged in, shows Admin or User view, according to role
  */
-const home = () => {
+const Home = () => {
     const {authUser, setAuthUser} = useContext(AuthUserContext);
 
+    const history = useHistory();
     if (!authUser) {
-        const history = useHistory();
         history.push('/login');
     }
 
@@ -41,4 +41,4 @@ const home = () => {
     )
 }
 
-export default home;
+export default Home;

@@ -22,16 +22,11 @@ router.post('/', (req, res, next) => {
 })
 
 router.put('/', (req, res, next) => {
-  const usernameExists = users.checkUsernameExists(req.body.user.username);
   const user = users.updateUser(req.body.user);
-  if (usernameExists) {
-    res.status(400).send({ message: 'Username exists' });
+  if (user) {
+    res.status(200).json(user);
   } else {
-    if (user) {
-      res.status(200).json(user);
-    } else {
-      res.status(404).json(req.body.user);
-    }
+    res.status(404).json(req.body.user);
   }
 })
 

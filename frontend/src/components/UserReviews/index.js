@@ -1,7 +1,7 @@
-import React, { useContext, useState } from 'react';
+import React, { useState } from 'react';
 import ReviewDetailsForm from '../../components/ReviewDetailsForm';
 import Modal from '../../components/UI/Modal';
-import UsersContext from '../../hoc/Users/context';
+import { useUsersContext } from '../../hoc/Users/context';
 import './UserReviews.css';
  
 /**
@@ -9,9 +9,9 @@ import './UserReviews.css';
  * List of Reviewee and status of review assigned to current user
  * @param {Array} props.reviews - Array of reviews
  */
-const userReviews = (props) => {
+const UserReviews = (props) => {
 
-    const { users } = useContext(UsersContext);
+    const { users } = useUsersContext();
     const [showModal, setShowModal] = useState(false);
     const [reviewId, setReviewId] = useState(null);
 
@@ -32,9 +32,9 @@ const userReviews = (props) => {
         return namedUser ? namedUser.name : '';
     }
 
-    const reviews = props.reviews.length ? props.reviews.map(review => {
+    const reviews = props.reviews && props.reviews.length ? props.reviews.map(review => {
         return (
-            <div className={'row details'} onClick={() => editReview(review.id)} key={review.id}>
+            <div className={'row detail'} onClick={() => editReview(review.id)} key={review.id}>
                 <div className={'reviewee'}>{getUserName(review.revieweeId)}</div>
                 <div className={'status'}>{review.status}</div>
             </div>
@@ -52,4 +52,4 @@ const userReviews = (props) => {
     );
 }
 
-export default userReviews;
+export default UserReviews;

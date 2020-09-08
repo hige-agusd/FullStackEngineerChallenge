@@ -1,13 +1,15 @@
-import React, { useContext, useState } from 'react';
+import React, { useState } from 'react';
 import ReviewForm from '../../components/ReviewForm';
 import ReviewDetailsForm from '../../components/ReviewDetailsForm';
 import Modal from '../../components/UI/Modal';
-import UsersContext from '../../hoc/Users/context';
+import { useReviewsContext } from '../../hoc/Reviews/context';
+import { useUsersContext } from '../../hoc/Users/context';
 import './Reviews.css';
  
-const reviews = (props) => {
+const Reviews = (props) => {
 
-    const { users } = useContext(UsersContext);
+    const { users } = useUsersContext();
+    const {reviews} = useReviewsContext();
     const [showModal, setShowModal] = useState(false);
     const [reviewId, setReviewId] = useState(null);
     const [modalContent, setModalContent] = useState('reviews');
@@ -27,20 +29,17 @@ const reviews = (props) => {
         toggleModal();
     }
 
-
     const modal = 
             showModal ? <Modal classes={'Form'} show={showModal} modalClosed={toggleModal}>
                 { modalContent === 'details' ? <ReviewDetailsForm reviewId={reviewId} readonly={true} cb={toggleModal} />
                     : <ReviewForm reviewId={reviewId} cb={toggleModal} /> }
             </Modal>
             : null;
-
     const getUserName = (id) => {
         const namedUser = users.find(u => u.id === parseInt(id, 10));
         return namedUser ? namedUser.name ? namedUser.name : namedUser.username : '';
     }
-
-    const reviews = props.reviews.map(review => {
+    const reviewsList = reviews && reviews.map(review => {
         return (
             <div className={'row detail'} onClick={() => editReview(review.id)} key={review.id}>
                 <div className={'reviewee'}>{getUserName(review.revieweeId)}</div>
@@ -48,7 +47,8 @@ const reviews = (props) => {
                 <div className={'username'}>{getUserName(review.reviewerId)}</div>
             </div>
         );
-    })
+    });
+
     return (
         <div className={'Reviews'}>
             {modal}
@@ -58,9 +58,9 @@ const reviews = (props) => {
                 <div className={'status'}>Status</div>
                 <div className={'username'}>Reviewer</div>
             </div>
-            {reviews}
+            {reviewsList}
         </div>
     );
 }
 
-export default reviews;
+export default Reviews;
